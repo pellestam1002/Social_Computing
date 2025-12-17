@@ -1,0 +1,37 @@
+Date;Type;Event;Location;Description
+2015-04-01;Policy;End of Milk Quotas;National;Start of unrestricted milk production (herd growth)
+2015-07-01;Policy;Introduction of PAS;National;Start of legal nitrogen framework
+2018-01-01;Policy;Phosphate Rights;National;Mandatory reduction of dairy herd
+2019-05-29;Policy;PAS Ruling Council of State;The Hague;Legal lockdown on NL (start of nitrogen crisis)
+2019-09-25;Policy;Remkes Report;The Hague;First major advice on drastic herd reduction
+2019-10-01;Protest;First Mass Protest;The Hague (Malieveld);Largest tractor-led traffic jam in history
+2019-10-14;Protest;Provincial House Protests;Groningen;Storming of the Groningen provincial building
+2019-10-16;Protest;RIVM & Binnenhof;De Bilt/The Hague;Doubt cast on RIVM calculation models
+2019-10-25;Protest;Provincial House Brabant;Den Bosch;Resistance to local nitrogen regulations
+2019-12-17;Policy;Emergency Nitrogen Act;National;Daytime speed limit reduced to 100 km/h
+2019-12-18;Protest;Code Red;National/Hilversum;Distribution center blockades and Media Park action
+2020-02-19;Protest;Agricultural Protest;The Hague (Koekamp);Frustration over lack of future prospects
+2020-07-10;Protest;Distribution Center Blockades;Zwolle/Nijkerk;Opposition to protein limits in animal feed
+2020-11-17;Protest;Black Book Submission;The Hague;Critique of policy during COVID-19 lockdowns
+2020-12-12;Protest;Christmas Actions;National;Public-friendly light-tractor actions and blockades
+2021-07-07;Protest;National Day of Action;The Hague;Response to new farm-closure reports
+2022-06-10;Policy;Nitrogen Map Presentation;The Hague;Zoning map with reduction targets up to 95%
+2022-06-22;Protest;Mass Protest Stroe;Gelderland (Stroe);Massive turnout against area-specific targets
+2022-06-27;Protest;Highway Actions;National;Wildcat blockades and tractor fires
+2022-06-28;Protest;Minister House Visit;Utrecht;Protest at the private home of Minister Van der Wal
+2022-07-04;Protest;DC Blockades;National;Coordinated shutdown of supermarket supply chains
+2022-08-05;Protest;Highway Dumping;National;Asbestos and waste dumping after Remkes deadline
+2022-09-30;Policy;End of Derogation Decision;Brussels;EU revokes Dutch manure exemption
+2023-01-01;Policy;Start of Derogation Phase-out;National;Reduction of manure limits (manure crisis)
+2023-03-11;Protest;Pre-election Protest;The Hague (Zuiderpark);Final major protest before 2023 elections
+2023-03-15;Policy;2023 Provincial Elections;National;Landslide victory for BBB party (discourse shift)
+2023-06-22;Policy;Collapse of Agricultural Accord;The Hague;Failure of negotiations on sector future
+2023-07-03;Policy;Opening of LBV+ Buyout;National;Launch of multi-billion buyout for "peak emitters"
+2024-02-01;Protest;Provincial Actions;National;Solidarity with European farmer protests
+2024-02-05;Protest;Night-time Blockades;A15/A50;Burning hay bales against manure policy
+2024-02-12;Protest;Provincial House NH;Haarlem;North Holland provincial nitrogen policy protest
+2024-05-14;Policy;New Coalition Agreement;The Hague;New government officially scraps the Nitrogen Map
+2025-01-01;Policy;Derogation Step 2025;National;Further manure use restrictions
+2025-02-14;Policy;Minister Wiersma Letter;The Hague;Shift towards "goal-steering" policy
+2025-05-28;Protest;Regional Quiet Protest;Drenthe;Resistance to local nature restoration plans
+2025-09-01;Policy;Start of 30% Skimming;National;Livestock reduction via trading rights skimming
