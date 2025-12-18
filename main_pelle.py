@@ -207,7 +207,10 @@ plt.close()
 # 5) Exploratory correlation tests (Spearman)
 #    1) NOS ↔ stikstof
 #    2) NOS ↔ stikstofcrisis
-#    3) NOS ↔ Monthly_protests
+#    3) NOS ↔ stikstofbeleid
+#    4) NOS ↔ stikstofprobleem
+#    5) NOS ↔ boerenprotest
+#    6) NOS ↔ Monthly_protests
 # =========================================================
 if spearmanr is None:
     print("\n[Correlation] scipy not available (install with: pip install scipy). Skipping correlation tests.")
@@ -218,6 +221,9 @@ else:
     # Pick the correct Trends columns (robust to ': Netherlands' etc.)
     stikstof_col = find_trends_col(df_trends, "stikstof")
     stikstofcrisis_col = find_trends_col(df_trends, "stikstofcrisis")
+    stikstofbeleid_col = find_trends_col(df_trends, "stikstofbeleid")
+    stikstofprobleem_col = find_trends_col(df_trends, "stikstofprobleem")
+    boerenprotest_col = find_trends_col(df_trends, "boerenprotest")
 
     if stikstof_col is None:
         print("\n[Correlation] Could not find a Google Trends column for 'stikstof'.")
@@ -229,13 +235,48 @@ else:
     else:
         master = master.merge(df_trends[["date", stikstofcrisis_col]].rename(columns={stikstofcrisis_col: "stikstofcrisis"}), on="date", how="inner")
 
+    if stikstofbeleid_col is None:
+        print("[Correlation] Could not find a Google Trends column for 'stikstofbeleid'.")
+    else:
+        master = master.merge(
+            df_trends[["date", stikstofbeleid_col]].rename(columns={stikstofbeleid_col: "stikstofbeleid"}),
+            on="date",
+            how="inner"
+        )
+
+    if stikstofprobleem_col is None:
+        print("[Correlation] Could not find a Google Trends column for 'stikstofprobleem'.")
+    else:
+        master = master.merge(
+            df_trends[["date", stikstofprobleem_col]].rename(columns={stikstofprobleem_col: "stikstofprobleem"}),
+            on="date",
+            how="inner"
+        )
+
+    if boerenprotest_col is None:
+        print("[Correlation] Could not find a Google Trends column for 'boerenprotest'.")
+    else:
+        master = master.merge(
+            df_trends[["date", boerenprotest_col]].rename(columns={boerenprotest_col: "boerenprotest"}),
+            on="date",
+            how="inner"
+        )
+
     if protests_monthly is not None and len(protests_monthly) > 0:
         master = master.merge(protests_monthly, on="date", how="left")
     else:
         master["Monthly_protests"] = pd.NA
 
     # Make sure numeric
-    for c in ["NOS_article_count", "stikstof", "stikstofcrisis", "Monthly_protests"]:
+    for c in [
+        "NOS_article_count",
+        "stikstof",
+        "stikstofcrisis",
+        "stikstofbeleid",
+        "stikstofprobleem",
+        "boerenprotest",
+        "Monthly_protests",
+    ]:
         if c in master.columns:
             master[c] = pd.to_numeric(master[c], errors="coerce")
 
@@ -256,6 +297,9 @@ else:
 
     run_test("NOS_article_count", "stikstof")
     run_test("NOS_article_count", "stikstofcrisis")
+    run_test("NOS_article_count", "stikstofbeleid")
+    run_test("NOS_article_count", "stikstofprobleem")
+    run_test("NOS_article_count", "boerenprotest")
     run_test("NOS_article_count", "Monthly_protests")
 
 print("Saved:")
