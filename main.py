@@ -9,7 +9,9 @@ import matplotlib.pyplot as plt
 NOS_PATH = r"/Users/p.stam/Desktop/NOS_NL_articles_2015_jul_2025.feather"  # <-- aanpassen
 
 # 2) Dit staat wél in je projectmap
+
 TRENDS_PATH = "multiTimeline.csv"
+EVENTS_PATH = "Protest_regel_data.txt"
 
 IMAGES_DIR = "images"
 
@@ -78,9 +80,33 @@ df_trends = df_trends.sort_values("date")
 # =========================================================
 # 3) FIGURE 1 — NOS COVERAGE
 # =========================================================
+# --- load events (optional: if file exists) ---
+events_in_range = None
+if os.path.exists(EVENTS_PATH):
+    events = pd.read_csv(EVENTS_PATH, sep=";", encoding="utf-8-sig")
+    if "Date" in events.columns:
+        events["Date"] = pd.to_datetime(events["Date"], errors="coerce")
+        events = events.dropna(subset=["Date"])
+
+        # keep only events within the NOS timeline range
+        if len(nos_monthly) > 0:
+            start = nos_monthly["date"].min()
+            end = nos_monthly["date"].max()
+            events_in_range = events[(events["Date"] >= start) & (events["Date"] <= end)].sort_values("Date")
+else:
+    print(f"Warning: events file not found at '{EVENTS_PATH}' (skipping event markers).")
+
 plt.figure(figsize=(12, 5))
+
+# NOS line
 plt.plot(nos_monthly["date"], nos_monthly["NOS_article_count"], linewidth=2)
-plt.title("Monthly NOS Coverage of Nitrogen-Related Issues")
+
+# Event markers (vertical dashed lines)
+if events_in_range is not None and len(events_in_range) > 0:
+    for d in events_in_range["Date"]:
+        plt.axvline(d, linestyle="--", alpha=0.25)
+
+plt.title("Monthly NOS Coverage of Nitrogen-Related Issues with Major Events")
 plt.xlabel("Time (monthly)")
 plt.ylabel("Number of NOS articles")
 plt.grid(True)
@@ -96,7 +122,14 @@ plt.close()
 plt.figure(figsize=(12, 5))
 for c in term_cols:
     if df_trends[c].notna().any():
-        plt.plot(df_trends["date"], df_trends[c], linewidth=1.8, label=c)
+        clean_label = c.split(":")[0]
+        clean_label = clean_label.replace("Netherlands", "").replace("Nederland", "").strip()
+        plt.plot(
+            df_trends["date"],
+            df_trends[c],
+            linewidth=1.8,
+            label=clean_label
+        )
 
 plt.title("Monthly Google Trends (selected search terms)")
 plt.xlabel("Time (monthly)")
