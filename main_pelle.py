@@ -3,6 +3,17 @@ import re
 import pandas as pd
 import matplotlib.pyplot as plt
 
+# =========================================================
+# Matplotlib styling (bigger text for paper-ready figures)
+# =========================================================
+plt.rcParams.update({
+    "axes.titlesize": 16,
+    "axes.labelsize": 14,
+    "xtick.labelsize": 12,
+    "ytick.labelsize": 12,
+    "legend.fontsize": 12,
+})
+
 # Optional: only needed for correlation tests
 try:
     from scipy.stats import spearmanr
@@ -167,9 +178,9 @@ if events_in_range is not None and len(events_in_range) > 0:
     for d in events_in_range["Date"]:
         plt.axvline(d, linestyle="--", alpha=0.25)
 
-plt.title("Monthly NOS Coverage of Nitrogen-Related Issues with Major Events")
 plt.xlabel("Time (monthly)")
 plt.ylabel("Number of NOS articles")
+plt.xticks(rotation=0)
 plt.grid(True)
 plt.tight_layout()
 
@@ -192,11 +203,10 @@ for c in term_cols:
             label=clean_label
         )
 
-plt.title("Monthly Google Trends (selected search terms)")
 plt.xlabel("Time (monthly)")
 plt.ylabel("Google Trends index (normalized)")
 plt.grid(True)
-plt.legend(fontsize=9, loc="upper left")
+plt.legend(loc="upper left")
 plt.tight_layout()
 
 out2 = os.path.join(IMAGES_DIR, "figure_2_google_trends.png")
