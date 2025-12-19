@@ -179,7 +179,7 @@ if events_in_range is not None and len(events_in_range) > 0:
         plt.axvline(d, linestyle="--", alpha=0.25)
 
 plt.xlabel("Time (monthly)")
-plt.ylabel("Number of NOS articles")
+plt.ylabel("Number of NOS articles per month")
 plt.xticks(rotation=0)
 plt.grid(True)
 plt.tight_layout()
